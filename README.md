@@ -1,5 +1,5 @@
 # Word-Chain
-本次作业要求详见(2022北航敏捷软件工程课程博客)[https://bbs.csdn.net/topics/605443466]。
+本次作业要求详见[2022北航敏捷软件工程课程博客](https://bbs.csdn.net/topics/605443466)。
 
 ## Step 1
 
@@ -11,4 +11,4 @@
 
 ### Tests:
 
-见(tests/step1.txt)[https://github.com/BUAA-SE-Pair-Programming-2022/Word-Chain/blob/master/tests/step1.txt]。
+见[tests/step1.txt](https://github.com/BUAA-SE-Pair-Programming-2022/Word-Chain/blob/master/tests/step1.txt)。
