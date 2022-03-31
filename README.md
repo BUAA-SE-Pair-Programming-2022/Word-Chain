@@ -1,7 +1,7 @@
 # Word-Chain
 本次作业要求详见[2022北航敏捷软件工程课程博客](https://bbs.csdn.net/topics/605443466)。
 
-## Step 1
+## [Step 1](https://github.com/BUAA-SE-Pair-Programming-2022/Word-Chain/tree/step1)
 
 ### Tasks:
 
