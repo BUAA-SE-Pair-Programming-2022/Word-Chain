@@ -11,4 +11,4 @@
 
 ### Tests:
 
-见(tests/step1.txt)[./tests/step1.txt]。
+见(tests/step1.txt)[https://github.com/BUAA-SE-Pair-Programming-2022/Word-Chain/blob/master/tests/step1.txt]。
