@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using core_src.exceptions;
 
 namespace core_src
 {
@@ -10,6 +9,7 @@ namespace core_src
         private readonly List<bool> _args;
         private readonly string _file;
         private readonly char _starting, _ending;
+        private readonly List<string> _words = new();
 
         public ArgsParser(IReadOnlyList<string> args)
         {
@@ -18,7 +18,6 @@ namespace core_src
             _ending = '0';
 
             for (var i = 0; i < args.Count; ++i)
-            {
                 switch (args[i])
                 {
                     case "-n":
@@ -69,17 +68,16 @@ namespace core_src
                         _r = true;
                         break;
                     default:
-                        if (args[i].Substring(args[i].Length - 4, 4) == ".txt")
-                        {
+                        if (args[i].Length >= 4 && args[i].Substring(args[i].Length - 4, 4) == ".txt")
                             _file = args[i];
-                        } 
-                        else 
-                            throw new ArgsTypeException();
+                        else
+                            _words.Add(args[i]);
+                        //throw new ArgsTypeException();
                         break;
                 }
-            }
 
-            _args = new List<bool>{_n, _w, _m, _c, _h, _t};
+
+            _args = new List<bool> {_n, _w, _m, _c, _h, _t};
             var throwConflict = false;
             for (var k = 0; k < 4; ++k)
             {
@@ -89,7 +87,7 @@ namespace core_src
                 throwConflict = true;
             }
         }
-        
+
         public bool ReadFromFile()
         {
             return _readFromFile;
@@ -98,6 +96,11 @@ namespace core_src
         public string GetFile()
         {
             return _file;
+        }
+
+        public List<string> GetWords()
+        {
+            return _words;
         }
 
         public List<bool> GetArgs()

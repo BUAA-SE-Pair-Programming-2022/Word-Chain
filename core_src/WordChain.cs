@@ -22,13 +22,18 @@ namespace core_src
             try
             {
                 _head = itself[0][0];
-                _tail = itself[^1][^1];
+                _tail = itself[itself.Count - 1][itself[itself.Count - 1].Length - 1];
             }
             catch (ArgumentOutOfRangeException)
             {
                 _head = '\0';
                 _tail = '\0';
             }
+        }
+
+        public List<string> GetChain()
+        {
+            return _itself;
         }
 
         public void Add(string str)

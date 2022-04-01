@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Scripts 
 {
@@ -8,6 +8,7 @@ namespace Scripts
     {
         private bool _n, _w, _m, _c, _h, _t, _r;
         private Toggle _tN, _tW, _tM, _tC, _tH, _tT, _tR;
+        private InputField _inputHead, _inputTail;
 
         private Toggle FindToggle(string name) 
         {
@@ -23,6 +24,8 @@ namespace Scripts
             _tH = FindToggle("H");
             _tT = FindToggle("T");
             _tR = FindToggle("R");
+            _inputHead = GameObject.Find("InputHead").GetComponent<InputField>();
+            _inputTail = GameObject.Find("InputTail").GetComponent<InputField>();
         }
 
         public void Update() 
@@ -61,6 +64,10 @@ namespace Scripts
             ChangeColor(_tW, _tW.enabled);
             ChangeColor(_tM, _tM.enabled);
             ChangeColor(_tC, _tC.enabled);
+            _tR.enabled = _tT.enabled = _tH.enabled = _n || _w || _m || _c;
+            ChangeColor(_tR, _tR.enabled);
+            ChangeColor(_tT, _tT.enabled);
+            ChangeColor(_tH, _tH.enabled);
         }
 
         public bool GetN()
@@ -96,6 +103,21 @@ namespace Scripts
         public bool GetR()
         {
             return _r;
+        }
+
+        public char GetHeadChar() 
+        {
+            return _inputHead.text.Length == 0 ? '\0' : _inputHead.text[0];
+        }
+
+        public char GetTailChar() 
+        {
+            return _inputTail.text.Length == 0 ? '\0' : _inputTail.text[0];
+        }
+
+        public List<bool> GetArgs() 
+        {
+            return new List<bool> {_n, _w, _m, _c, _h, _t, _r};
         }
     }
 }

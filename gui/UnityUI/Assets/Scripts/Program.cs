@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
+using core_src;
 
 namespace Scripts
 {
@@ -25,10 +27,27 @@ namespace Scripts
             {
                 lastConfirmState = InputSystemScript().GetState();
 
-                srcStr = InputSystemScript().GetContent();      //////////////////////// CORE!!!!!!!!!!!!!!!!!!
-                string newValue = srcStr;               // TODO: make actual res //////////////////////////////
+                srcStr = InputSystemScript().GetContent();
 
-                ResFieldScript().SetValue(newValue);
+                var argsParser = new ArgsParser(new List<bool>(
+                    TogglesScript().GetArgs()), 
+                    TogglesScript().GetHeadChar(), 
+                    TogglesScript().GetTailChar());
+                srcStr = InputSystemScript().GetContent();
+                
+                var wg = new WordsGen(srcStr.ToLower());
+                var processor = new Processor(wg.GetDict(), wg.GetList(), !argsParser.R());
+                processor.BuildConcatTree();
+                
+                var resGen = new ResGen(new Core(processor), argsParser);
+                if (processor.GetPopupError()) 
+                {
+                    processor.SetPopupError(false);
+                    print("Loop not allowed but detected! Please review your input!");
+                } else {
+                    string newValue = resGen.Gen();
+                    ResFieldScript().SetValue(newValue);
+                }
             }
         }
 
@@ -49,10 +68,7 @@ namespace Scripts
 
         public void Method()
         {
-            var wg = new WordsGen((srcStr ?? "").ToLower());        // To separate string into a list of words and make a dictionary. E.g. "abc cde" => ["abc", "cde"].
-            var processor = new Processor(wg.GetDict(), wg.GetList(), false);
-            processor.BuildConcatTree();                            // Very essential!!! This method organizes word chains as trees. (* Can be optimized)
-
+            
             ///////////////////// core methods ///////////////////////
             // processor.GenAll();                                  // To generate all applicable chains.
             // processor.GenMaxQuan();                              // To generate chains with maximum word count.

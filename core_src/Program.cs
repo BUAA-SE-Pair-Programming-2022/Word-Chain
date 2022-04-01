@@ -20,20 +20,36 @@ namespace core_src
                 DisplayHelp();
                 return;
             }
-            
+
+            WordsGen wg;
             var argsParser = new ArgsParser(args);
-            var srcStr = new FileReader(argsParser.GetFile()).ReadFileAsString();
-            var wg = new WordsGen(srcStr.ToLower());
+            if (argsParser.GetFile() == null)
+            {
+                var words = Console.ReadLine()?.Split(' ');
+                argsParser = new ArgsParser(words);
+                wg = new WordsGen(argsParser.GetWords());
+            }
+            else
+            {
+                wg = new WordsGen(new FileReader(argsParser.GetFile()).ReadFileAsString().ToLower());
+            }
+            //var srcStr = argsParser.ReadFromFile() ? new FileReader(argsParser.GetFile()).ReadFileAsString() : argsParser.GetWords();
+
+            //var wg = new WordsGen(srcStr.ToLower());
+
+
             var processor = new Processor(wg.GetDict(), wg.GetList(), !argsParser.R());
             processor.BuildConcatTree();
-            
-            var resGen = new ResGen(new Core(processor), argsParser);
+
+            //var resGen = new ResGen(new Core(processor), argsParser);
+            var resGen = new ResGen(processor, argsParser);
             resGen.Gen();
         }
 
         private static bool HelpRequired(string param)
         {
-            return param is "--help" or "help";
+            return param.Equals("--help") || param.Equals("--help");
+            //return param is "--help" or "help";
         }
 
         private static void DisplayHelp()

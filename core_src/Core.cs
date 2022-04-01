@@ -5,61 +5,83 @@ namespace core_src
 {
     public class Core
     {
-        private readonly SortedDictionary<int, List<WordChain>> _resByWordCount;
-        private readonly SortedDictionary<int, List<WordChain>> _resByCharCount;
-        private readonly List<WordChain> _res;
-
-        public Core(Processor processor)
+        public int gen_chains_all(List<string> words, int len, out List<List<string>> result, char head, char tail,
+            bool enable_loop)
         {
-            var _processor = processor;
-            _processor.GenAll();
-            _resByWordCount = _processor.GetResByWordCount();
-            _resByCharCount = _processor.GetResByCharCount();
-            _res = _processor.GetRes();
-        }
-        
-        public int gen_chains_all(out List<WordChain> result, char head, char tail)
-        {
-            result = _res.Where(item => head == '\0' || head == item.GetHead()).Where(item => tail == '\0' || tail == item.GetTail()).ToList();
+            var wg = new WordsGen(words);
+            var processor = new Processor(wg.GetDict(), wg.GetList(), !enable_loop);
+            processor.BuildConcatTree();
+            processor.GenAll();
+            var res = processor.GetRes();
+            var chains = res.Where(item => head == '\0' || head == item.GetHead())
+                .Where(item => tail == '\0' || tail == item.GetTail()).ToList();
+            result = new List<List<string>>();
+            foreach (var c in chains) result.Add(c.GetChain());
             return result.Count;
         }
-        
-        public int gen_chain_word(out WordChain result, char head, char tail)
+
+        public int gen_chain_word(List<string> words, int len, out List<string> result, char head, char tail,
+            bool enable_loop)
         {
-            foreach (var item in _resByWordCount.Keys.SelectMany(key => _resByWordCount[key].Where(item => head == '\0' || head == item.GetHead()).Where(item => tail == '\0' || tail == item.GetTail())))
+            var wg = new WordsGen(words);
+            var processor = new Processor(wg.GetDict(), wg.GetList(), !enable_loop);
+            processor.BuildConcatTree();
+            processor.GenAll();
+            var resByWordCount = processor.GetResByWordCount();
+
+            foreach (var item in resByWordCount.Keys.SelectMany(key =>
+                         resByWordCount[key].Where(item => head == '\0' || head == item.GetHead())
+                             .Where(item => tail == '\0' || tail == item.GetTail())))
             {
-                result = item;
-                return result.GetCount();
+                result = item.GetChain();
+                return result.Count;
             }
 
-            result = new WordChain(new List<string>(), 0, true);
+            result = new List<string>();
             return 0;
         }
-        
-        public int gen_chain_word_unique(out WordChain result, char head, char tail)
+
+        public int gen_chain_word_unique(List<string> words, int len, out List<string> result, char head, char tail,
+            bool enable_loop)
         {
-            foreach (var item in _resByWordCount.Keys.SelectMany(key => from item in _resByWordCount[key] 
-                         where head == '\0' || head == item.GetHead() 
-                         where tail == '\0' || tail == item.GetTail() 
-                         where item.GetAllDifferentStart() select item))
+            var wg = new WordsGen(words);
+            var processor = new Processor(wg.GetDict(), wg.GetList(), !enable_loop);
+            processor.BuildConcatTree();
+            processor.GenAll();
+            var resByWordCount = processor.GetResByWordCount();
+
+            foreach (var item in resByWordCount.Keys.SelectMany(key => from item in resByWordCount[key]
+                         where head == '\0' || head == item.GetHead()
+                         where tail == '\0' || tail == item.GetTail()
+                         where item.GetAllDifferentStart()
+                         select item))
             {
-                result = item;
-                return result.GetCount();
+                result = item.GetChain();
+                return result.Count;
             }
 
-            result = new WordChain(new List<string>(), 0, true);
+            result = new List<string>();
             return 0;
         }
-        
-        public int gen_chain_char(out WordChain result, char head, char tail)
+
+        public int gen_chain_char(List<string> words, int len, out List<string> result, char head, char tail,
+            bool enable_loop)
         {
-            foreach (var item in _resByCharCount.Keys.SelectMany(key => _resByCharCount[key].Where(item => head == '\0' || head == item.GetHead()).Where(item => tail == '\0' || tail == item.GetTail())))
+            var wg = new WordsGen(words);
+            var processor = new Processor(wg.GetDict(), wg.GetList(), !enable_loop);
+            processor.BuildConcatTree();
+            processor.GenAll();
+            var resByCharCount = processor.GetResByCharCount();
+
+            foreach (var item in resByCharCount.Keys.SelectMany(key =>
+                         resByCharCount[key].Where(item => head == '\0' || head == item.GetHead())
+                             .Where(item => tail == '\0' || tail == item.GetTail())))
             {
-                result = item;
-                return result.GetCount();
+                result = item.GetChain();
+                return result.Count;
             }
 
-            result = new WordChain(new List<string>(), 0, true);
+            result = new List<string>();
             return 0;
         }
     }
