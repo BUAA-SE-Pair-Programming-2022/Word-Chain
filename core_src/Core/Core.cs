@@ -19,10 +19,12 @@ namespace Core
             foreach (var c in chains) result.Add(c.GetChain());
 
             if (result.Count <= 20000) return result.Count;
+
+            var returnVal = result.Count;
             result.Clear();
             new OverflowException();
 
-            return result.Count;
+            return returnVal;
         }
 
         public static int gen_chain_word(HashSet<string> words, int len, ArrayList result, char head, char tail,
@@ -41,10 +43,11 @@ namespace Core
                 result.AddRange(item.GetChain());
 
                 if (result.Count <= 20000) return result.Count;
+                var returnVal = result.Count;
                 result.Clear();
                 new OverflowException();
 
-                return result.Count;
+                return returnVal;
             }
             
             return 0;
@@ -64,10 +67,11 @@ namespace Core
                 result.AddRange(item.GetChain());
 
                 if (result.Count <= 20000) return result.Count;
+                var returnVal = result.Count;
                 result.Clear();
                 new OverflowException();
 
-                return result.Count;
+                return returnVal;
             }
 
             return 0;
@@ -89,10 +93,11 @@ namespace Core
                 result.AddRange(item.GetChain());
 
                 if (result.Count <= 20000) return result.Count;
+                var returnVal = result.Count;
                 result.Clear();
                 new OverflowException();
 
-                return result.Count;
+                return returnVal;
             }
 
             return 0;

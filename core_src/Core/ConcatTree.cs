@@ -9,22 +9,22 @@ namespace Core
 
         public ConcatTree(string str)
         {
-            this._val = str;
+            _val = str;
         }
 
         public void AddKid(ConcatTree newKid)
         {
-            this._kids.Add(newKid);
+            _kids.Add(newKid);
         }
 
         public string GetVal()
         {
-            return this._val;
+            return _val;
         }
 
         public List<ConcatTree> GetKids()
         {
-            return this._kids;
+            return _kids;
         }
     }
 }

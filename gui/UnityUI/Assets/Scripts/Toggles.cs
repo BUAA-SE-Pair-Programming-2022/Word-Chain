@@ -64,10 +64,21 @@ namespace Scripts
             ChangeColor(_tW, _tW.enabled);
             ChangeColor(_tM, _tM.enabled);
             ChangeColor(_tC, _tC.enabled);
-            _tR.enabled = _tT.enabled = _tH.enabled = _n || _w || _m || _c;
+            _tR.enabled = _tT.enabled = _tH.enabled = _w || _c;
             ChangeColor(_tR, _tR.enabled);
             ChangeColor(_tT, _tT.enabled);
             ChangeColor(_tH, _tH.enabled);
+
+            _tN.isOn = _tN.enabled && _tN.isOn;
+            _tW.isOn = _tW.enabled && _tW.isOn;
+            _tM.isOn = _tM.enabled && _tM.isOn;
+            _tC.isOn = _tC.enabled && _tC.isOn;
+            _tR.isOn = _tR.enabled && _tR.isOn;
+            _tT.isOn = _tT.enabled && _tT.isOn;
+            _tH.isOn = _tH.enabled && _tH.isOn;
+
+            _inputHead.text = _h ? _inputHead.text : "";
+            _inputTail.text = _t ? _inputTail.text : "";
         }
 
         public bool GetN()
@@ -107,17 +118,22 @@ namespace Scripts
 
         public char GetHeadChar() 
         {
-            return _inputHead.text.Length == 0 ? '\0' : _inputHead.text[0];
+            return _inputHead.text.Length == 0 ? '\0' : _inputHead.text.ToLower()[0];
         }
 
         public char GetTailChar() 
         {
-            return _inputTail.text.Length == 0 ? '\0' : _inputTail.text[0];
+            return _inputTail.text.Length == 0 ? '\0' : _inputTail.text.ToLower()[0];
         }
 
         public List<bool> GetArgs() 
         {
             return new List<bool> {_n, _w, _m, _c, _h, _t, _r};
+        }
+
+        public bool GetAllFalse() 
+        {
+            return !(_n || _w || _m || _c || _h || _t || _r);
         }
     }
 }

@@ -27,26 +27,36 @@ namespace Scripts
             {
                 lastConfirmState = InputSystemScript().GetState();
 
-                srcStr = InputSystemScript().GetContent();
-
                 var argsParser = new ArgsParser(new List<bool>(
                     TogglesScript().GetArgs()), 
                     TogglesScript().GetHeadChar(), 
                     TogglesScript().GetTailChar());
+
                 srcStr = InputSystemScript().GetContent();
-                
                 var wg = new WordsGen(srcStr.ToLower());
                 var processor = new Processor(wg.GetDict(), wg.GetList(), !argsParser.R());
                 processor.BuildConcatTree();
                 
-                var resGen = new ResGen(new Core(processor), argsParser);
-                if (processor.GetPopupError()) 
+                if (TogglesScript().GetAllFalse())
                 {
-                    processor.SetPopupError(false);
-                    print("Loop not allowed but detected! Please review your input!");
-                } else {
-                    string newValue = resGen.Gen();
-                    ResFieldScript().SetValue(newValue);
+                    ResFieldScript().SetValue("请在确认前至少选择一项功能。");
+                } 
+                else if (!Char.IsLetter(TogglesScript().GetHeadChar()) && TogglesScript().GetHeadChar() != '\0' || 
+                         !Char.IsLetter(TogglesScript().GetTailChar()) && TogglesScript().GetTailChar() != '\0')
+                {
+                    ResFieldScript().SetValue("指定的首尾字符必须为英文字母。");    
+                }
+                else 
+                {
+                    var resGen = new ResGen(new Core(processor), argsParser);
+                    if (processor.GetPopupError()) 
+                    {
+                        processor.SetPopupError(false);
+                        ResFieldScript().SetValue("输入中存在单词环但是没有被允许！请检查输入或调整指令。");
+                    } else {
+                        string newValue = resGen.Gen();
+                        ResFieldScript().SetValue(InputSystemScript().FileNotFound() && InputSystemScript().GetFromFile() ? "输入内容为空或者文件不存在！请指定输入或检查文件绝对路径。" : newValue);
+                    }
                 }
             }
         }

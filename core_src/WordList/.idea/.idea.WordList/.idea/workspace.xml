@@ -7,14 +7,9 @@
     <list default="true" id="b2ff34c1-5a29-4d3a-a78d-f4ee5217dd81" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../Core/ConcatTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/ConcatTree.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Core/Core.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/Core.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Core/Processor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/Processor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Core/WordChain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/WordChain.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Core/WordsGen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Core/WordsGen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FileOutput/FileOutput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FileOutput/FileOutput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FileReader/obj/Debug/FileReader.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../FileReader/obj/Debug/FileReader.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WordList/ArgsParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WordList/ArgsParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WordList/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WordList/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WordList/obj/Debug/net5.0/WordList.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WordList/obj/Debug/net5.0/WordList.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WordList/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WordList/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WordList/obj/Debug/net5.0/WordList.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/WordList/obj/Debug/net5.0/WordList.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WordList/obj/Debug/net5.0/WordList.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WordList/obj/Debug/net5.0/WordList.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WordList/obj/Debug/net5.0/WordList.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WordList/obj/Debug/net5.0/WordList.csproj.AssemblyReference.cache" afterDir="false" />
@@ -22,6 +17,7 @@
       <change beforePath="$PROJECT_DIR$/WordList/obj/WordList.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/WordList/obj/WordList.csproj.nuget.g.props" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WordList/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/WordList/obj/project.assets.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WordList/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WordList/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WordList/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/WordList/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,13 +68,14 @@
       <option name="presentableId" value="Default" />
       <updated>1648908228861</updated>
       <workItem from="1648908232385" duration="848000" />
+      <workItem from="1648909551875" duration="516000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

@@ -6,7 +6,12 @@ namespace Scripts
 {
     public class FileReader : MonoBehaviour
     {
-        public FileReader() {}
+        private bool _fileNotFound;
+
+        public FileReader() 
+        {
+            _fileNotFound = false;
+        }
 
         public string ReadFileAsString(string _absolutePath)
         {
@@ -18,12 +23,19 @@ namespace Scripts
             catch (Exception)
             {
                 print("File not found!");   // TODO: Exception Popup.
+                _fileNotFound = true;
                 return "";
             }
+            _fileNotFound = false;
             var res = "";
             foreach (var str in tem)
                 res += str + " ";
             return res;
+        }
+
+        public bool GetFileNotFound()
+        {
+            return _fileNotFound;
         }
     }
 }
