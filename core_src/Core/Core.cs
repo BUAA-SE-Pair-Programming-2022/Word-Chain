@@ -22,6 +22,12 @@ namespace Core
                 .Where(item => tail == '\0' || tail == item.GetTail()).ToList();
             foreach (var c in chains) result.Add(c.GetChain());
 
+            if (result.Count > 20000)
+            {
+                result.Clear();
+                new OverflowException();
+            }
+
             return result.Count;
         }
 
@@ -39,6 +45,13 @@ namespace Core
                              .Where(item => tail == '\0' || tail == item.GetTail())))
             {
                 result.AddRange(item.GetChain());
+
+                if (result.Count > 20000)
+                {
+                    result.Clear();
+                    new OverflowException();
+                }
+
                 return result.Count;
             }
 
@@ -64,6 +77,13 @@ namespace Core
                          select item))
             {
                 result.AddRange(item.GetChain());
+
+                if (result.Count > 20000)
+                {
+                    result.Clear();
+                    new OverflowException();
+                }
+
                 return result.Count;
             }
 
@@ -85,6 +105,13 @@ namespace Core
                              .Where(item => tail == '\0' || tail == item.GetTail())))
             {
                 result.AddRange(item.GetChain());
+
+                if (result.Count > 20000)
+                {
+                    result.Clear();
+                    new OverflowException();
+                }
+
                 return result.Count;
             }
 
