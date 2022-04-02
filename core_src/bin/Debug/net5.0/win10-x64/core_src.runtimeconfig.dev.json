@@ -1,8 +1,0 @@
-{
-  "runtimeOptions": {
-    "additionalProbingPaths": [
-      "/Users/springs/.dotnet/store/|arch|/|tfm|",
-      "/Users/springs/.nuget/packages"
-    ]
-  }
-}

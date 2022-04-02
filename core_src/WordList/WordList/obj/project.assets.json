@@ -1,0 +1,130 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "Core/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Core.dll": {}
+        }
+      },
+      "FileOutput/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/FileOutput.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FileOutput.dll": {}
+        }
+      },
+      "FileReader/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/FileReader.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FileReader.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Core/1.0.0": {
+      "type": "project",
+      "path": "../../Core/Core.csproj",
+      "msbuildProject": "../../Core/Core.csproj"
+    },
+    "FileOutput/1.0.0": {
+      "type": "project",
+      "path": "../../FileOutput/FileOutput.csproj",
+      "msbuildProject": "../../FileOutput/FileOutput.csproj"
+    },
+    "FileReader/1.0.0": {
+      "type": "project",
+      "path": "../../FileReader/FileReader.csproj",
+      "msbuildProject": "../../FileReader/FileReader.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "Core >= 1.0.0",
+      "FileOutput >= 1.0.0",
+      "FileReader >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\VR\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\WordList\\WordList\\WordList.csproj",
+      "projectName": "WordList",
+      "projectPath": "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\WordList\\WordList\\WordList.csproj",
+      "packagesPath": "C:\\Users\\VR\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\WordList\\WordList\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\VR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {
+            "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\Core\\Core.csproj"
+            },
+            "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\FileOutput\\FileOutput.csproj": {
+              "projectPath": "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\FileOutput\\FileOutput.csproj"
+            },
+            "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\FileReader\\FileReader.csproj": {
+              "projectPath": "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\FileReader\\FileReader.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

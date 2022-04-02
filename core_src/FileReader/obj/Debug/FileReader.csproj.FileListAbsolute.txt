@@ -1,0 +1,6 @@
+C:\Users\VR\Desktop\Word-Chain\core_src\FileReader\bin\Debug\FileReader.dll
+C:\Users\VR\Desktop\Word-Chain\core_src\FileReader\bin\Debug\FileReader.pdb
+C:\Users\VR\Desktop\Word-Chain\core_src\FileReader\obj\Debug\FileReader.csproj.AssemblyReference.cache
+C:\Users\VR\Desktop\Word-Chain\core_src\FileReader\obj\Debug\FileReader.csproj.CoreCompileInputs.cache
+C:\Users\VR\Desktop\Word-Chain\core_src\FileReader\obj\Debug\FileReader.dll
+C:\Users\VR\Desktop\Word-Chain\core_src\FileReader\obj\Debug\FileReader.pdb

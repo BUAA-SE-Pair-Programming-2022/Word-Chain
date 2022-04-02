@@ -1,0 +1,12 @@
+C:\Users\VR\Desktop\Word-Chain\core_src\Core\Core\obj\Debug\Core.csproj.AssemblyReference.cache
+C:\Users\VR\Desktop\Word-Chain\core_src\Core\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
+C:\Users\VR\Desktop\Word-Chain\core_src\Core\Core\bin\Debug\Core.dll
+C:\Users\VR\Desktop\Word-Chain\core_src\Core\Core\bin\Debug\Core.pdb
+C:\Users\VR\Desktop\Word-Chain\core_src\Core\Core\obj\Debug\Core.dll
+C:\Users\VR\Desktop\Word-Chain\core_src\Core\Core\obj\Debug\Core.pdb
+C:\Users\VR\Desktop\Word-Chain\core_src\Core\bin\Debug\Core.dll
+C:\Users\VR\Desktop\Word-Chain\core_src\Core\bin\Debug\Core.pdb
+C:\Users\VR\Desktop\Word-Chain\core_src\Core\obj\Debug\Core.csproj.AssemblyReference.cache
+C:\Users\VR\Desktop\Word-Chain\core_src\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
+C:\Users\VR\Desktop\Word-Chain\core_src\Core\obj\Debug\Core.dll
+C:\Users\VR\Desktop\Word-Chain\core_src\Core\obj\Debug\Core.pdb

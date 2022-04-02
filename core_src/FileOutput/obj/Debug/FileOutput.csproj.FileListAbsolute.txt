@@ -1,0 +1,6 @@
+C:\Users\VR\Desktop\Word-Chain\core_src\FileOutput\bin\Debug\FileOutput.dll
+C:\Users\VR\Desktop\Word-Chain\core_src\FileOutput\bin\Debug\FileOutput.pdb
+C:\Users\VR\Desktop\Word-Chain\core_src\FileOutput\obj\Debug\FileOutput.csproj.AssemblyReference.cache
+C:\Users\VR\Desktop\Word-Chain\core_src\FileOutput\obj\Debug\FileOutput.csproj.CoreCompileInputs.cache
+C:\Users\VR\Desktop\Word-Chain\core_src\FileOutput\obj\Debug\FileOutput.dll
+C:\Users\VR\Desktop\Word-Chain\core_src\FileOutput\obj\Debug\FileOutput.pdb

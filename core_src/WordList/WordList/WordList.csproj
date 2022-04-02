@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.csproj" />
+    <ProjectReference Include="..\..\FileOutput\FileOutput.csproj" />
+    <ProjectReference Include="..\..\FileReader\FileReader.csproj" />
+  </ItemGroup>
+
+  <!--
+  <ItemGroup>
+    <Reference Include="Core">
+      <HintPath>..\..\..\..\..\Downloads\Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  -->
+  
+
+</Project>
