@@ -44,7 +44,7 @@ namespace WordList
                         if (args[i].Length > 1)
                             throw new ArgsShouldBeCharException();
 
-                        if (!Char.IsLetter(_starting))
+                        if (!char.IsLetter(_starting))
                             throw new ArgsMissCharacterException();
 
                         _h = true;

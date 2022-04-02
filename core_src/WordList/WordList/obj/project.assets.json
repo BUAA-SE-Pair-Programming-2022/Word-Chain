@@ -56,38 +56,45 @@
     ]
   },
   "packageFolders": {
-    "/Users/springs/.nuget/packages/": {}
+    "C:\\Users\\VR\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/springs/Documents/BUAA/Schoolwork/Software-Engineering/Word-Chain/core_src/WordList/WordList/WordList.csproj",
+      "projectUniqueName": "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\WordList\\WordList\\WordList.csproj",
       "projectName": "WordList",
-      "projectPath": "/Users/springs/Documents/BUAA/Schoolwork/Software-Engineering/Word-Chain/core_src/WordList/WordList/WordList.csproj",
-      "packagesPath": "/Users/springs/.nuget/packages/",
-      "outputPath": "/Users/springs/Documents/BUAA/Schoolwork/Software-Engineering/Word-Chain/core_src/WordList/WordList/obj/",
+      "projectPath": "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\WordList\\WordList\\WordList.csproj",
+      "packagesPath": "C:\\Users\\VR\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\WordList\\WordList\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/springs/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\VR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "/Users/springs/Documents/BUAA/Schoolwork/Software-Engineering/Word-Chain/core_src/Core/Core.csproj": {
-              "projectPath": "/Users/springs/Documents/BUAA/Schoolwork/Software-Engineering/Word-Chain/core_src/Core/Core.csproj"
+            "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\Core\\Core.csproj"
             },
-            "/Users/springs/Documents/BUAA/Schoolwork/Software-Engineering/Word-Chain/core_src/FileOutput/FileOutput.csproj": {
-              "projectPath": "/Users/springs/Documents/BUAA/Schoolwork/Software-Engineering/Word-Chain/core_src/FileOutput/FileOutput.csproj"
+            "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\FileOutput\\FileOutput.csproj": {
+              "projectPath": "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\FileOutput\\FileOutput.csproj"
             },
-            "/Users/springs/Documents/BUAA/Schoolwork/Software-Engineering/Word-Chain/core_src/FileReader/FileReader.csproj": {
-              "projectPath": "/Users/springs/Documents/BUAA/Schoolwork/Software-Engineering/Word-Chain/core_src/FileReader/FileReader.csproj"
+            "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\FileReader\\FileReader.csproj": {
+              "projectPath": "C:\\Users\\VR\\Desktop\\Word-Chain\\core_src\\FileReader\\FileReader.csproj"
             }
           }
         }
@@ -116,7 +123,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.406/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
