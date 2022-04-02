@@ -1,37 +1,31 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
-using System;
 
 namespace Core
 {
-    public class Core
+    public static class Core
     {
-        static public int gen_chains_all(HashSet<string> words, int len, ArrayList result)
+        public static int gen_chains_all(HashSet<string> words, int len, ArrayList result)
         {
-            char head = '\0', tail = '\0';
-            bool enable_loop = true;
-
             var wg = new WordsGen(new List<string>(words));
-            var processor = new Processor(wg.GetDict(), wg.GetList(), !enable_loop);
+            var processor = new Processor(wg.GetDict(), wg.GetList(), false);
             processor.BuildConcatTree();
             processor.GenAll();
             var res = processor.GetRes();
 
-            var chains = res.Where(item => head == '\0' || head == item.GetHead())
-                .Where(item => tail == '\0' || tail == item.GetTail()).ToList();
+            var chains = res.Where(item => true)
+                .Where(item => true).ToList();
             foreach (var c in chains) result.Add(c.GetChain());
 
-            if (result.Count > 20000)
-            {
-                result.Clear();
-                new OverflowException();
-            }
+            if (result.Count <= 20000) return result.Count;
+            result.Clear();
+            new OverflowException();
 
             return result.Count;
         }
 
-        static public int gen_chain_word(HashSet<string> words, int len, ArrayList result, char head, char tail,
+        public static int gen_chain_word(HashSet<string> words, int len, ArrayList result, char head, char tail,
             bool enable_loop)
         {
             var wg = new WordsGen(new List<string>(words));
@@ -46,52 +40,40 @@ namespace Core
             {
                 result.AddRange(item.GetChain());
 
-                if (result.Count > 20000)
-                {
-                    result.Clear();
-                    new OverflowException();
-                }
+                if (result.Count <= 20000) return result.Count;
+                result.Clear();
+                new OverflowException();
 
                 return result.Count;
             }
-
-            result = new ArrayList();
+            
             return 0;
         }
 
-        static public int gen_chain_word_unique(HashSet<string> words, int len, ArrayList result)
+        public static int gen_chain_word_unique(HashSet<string> words, int len, ArrayList result)
         {
-            char head = '\0', tail = '\0';
-            bool enable_loop = true;
-
             var wg = new WordsGen(new List<string>(words));
-            var processor = new Processor(wg.GetDict(), wg.GetList(), !enable_loop);
+            var processor = new Processor(wg.GetDict(), wg.GetList(), false);
             processor.BuildConcatTree();
             processor.GenAll();
             var resByWordCount = processor.GetResByWordCount();
 
-            foreach (var item in resByWordCount.Keys.SelectMany(key => from item in resByWordCount[key]
-                         where head == '\0' || head == item.GetHead()
-                         where tail == '\0' || tail == item.GetTail()
-                         where item.GetAllDifferentStart()
-                         select item))
+            foreach (var item in resByWordCount.Keys.SelectMany(key => from item in resByWordCount[key] 
+                         where item.GetAllDifferentStart() select item))
             {
                 result.AddRange(item.GetChain());
 
-                if (result.Count > 20000)
-                {
-                    result.Clear();
-                    new OverflowException();
-                }
+                if (result.Count <= 20000) return result.Count;
+                result.Clear();
+                new OverflowException();
 
                 return result.Count;
             }
 
-            result = new ArrayList();
             return 0;
         }
 
-        static public int gen_chain_char(HashSet<string> words, int len, ArrayList result, char head, char tail,
+        public static int gen_chain_char(HashSet<string> words, int len, ArrayList result, char head, char tail,
             bool enable_loop)
         {
             var wg = new WordsGen(new List<string>(words));
@@ -106,16 +88,13 @@ namespace Core
             {
                 result.AddRange(item.GetChain());
 
-                if (result.Count > 20000)
-                {
-                    result.Clear();
-                    new OverflowException();
-                }
+                if (result.Count <= 20000) return result.Count;
+                result.Clear();
+                new OverflowException();
 
                 return result.Count;
             }
 
-            result = new ArrayList();
             return 0;
         }
     }

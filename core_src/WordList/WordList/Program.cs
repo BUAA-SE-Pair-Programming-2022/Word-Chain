@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Core;
 
 namespace WordList
 {
@@ -44,8 +43,6 @@ namespace WordList
                 case 3:
                     Core.Core.gen_chain_char(inWords, inLen, resultSingle, starting, ending, loopAllowed);
                     break;
-                default:
-                    break;
             }
 
             if (generalType == 0)
@@ -63,7 +60,7 @@ namespace WordList
             else
             {
                 var output = new FileOutput.FileOutput(resultSingle);
-                output.PrintToSolutionTXT();
+                output.PrintToSolutionTxt();
             }
         }
 

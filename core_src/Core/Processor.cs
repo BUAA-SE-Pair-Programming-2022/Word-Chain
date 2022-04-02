@@ -5,7 +5,7 @@ namespace Core
 {
     public class Processor
     {
-        private bool _detectLoop;
+        private readonly bool _detectLoop;
         private readonly Dictionary<char, List<string>> _wordsDict;
         private readonly List<string> _wordsList;
         private readonly List<ConcatTree> _roots = new List<ConcatTree>();
@@ -13,7 +13,7 @@ namespace Core
         private readonly Dictionary<char, List<WordChain>> _headCharDict = new Dictionary<char, List<WordChain>>();
         private readonly Dictionary<char, List<WordChain>> _tailCharDict = new Dictionary<char, List<WordChain>>();
 
-        private List<WordChain> _res = new List<WordChain>();
+        private readonly List<WordChain> _res = new List<WordChain>();
         private SortedDictionary<int, List<WordChain>> _resByWordCount = new SortedDictionary<int, List<WordChain>>();
         private SortedDictionary<int, List<WordChain>> _resByCharCount = new SortedDictionary<int, List<WordChain>>();
 

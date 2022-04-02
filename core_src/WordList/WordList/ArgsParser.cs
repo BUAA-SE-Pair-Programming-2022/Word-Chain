@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace WordList
 {
@@ -10,7 +9,6 @@ namespace WordList
         private readonly List<bool> _args;
         private readonly string _file;
         private readonly char _starting, _ending;
-        private readonly List<string> _words = new();
 
         public ArgsParser(IReadOnlyList<string> args)
         {

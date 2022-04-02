@@ -7,19 +7,16 @@ namespace Core
     public class WordChain
     {
         private readonly List<string> _itself;
-        private int _length;
-        private readonly Dictionary<char, List<string>> _headCharDictionary;
+        private readonly int _length;
         private readonly bool _allDifferentStart;
-        private char _head, _tail;
+        private readonly char _head;
+        private readonly char _tail;
 
         public WordChain(List<string> itself, int length, bool allDifferentStart)
         {
             _itself = itself;
             _length = length;
-            _headCharDictionary = new Dictionary<char, List<string>>();
             _allDifferentStart = allDifferentStart;
-            for (var a = 'a'; a <= 'z'; ++a)
-                _headCharDictionary[a] = new List<string>();
             try
             {
                 _head = itself[0][0];

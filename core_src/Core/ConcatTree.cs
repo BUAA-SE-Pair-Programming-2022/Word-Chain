@@ -5,7 +5,7 @@ namespace Core
     public class ConcatTree
     {
         private readonly List<ConcatTree> _kids = new List<ConcatTree>();
-        private string _val;
+        private readonly string _val;
 
         public ConcatTree(string str)
         {
