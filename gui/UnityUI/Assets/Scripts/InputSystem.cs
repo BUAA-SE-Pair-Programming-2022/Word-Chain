@@ -65,15 +65,5 @@ namespace Scripts
         {
             return _fileReader.ReadFileAsString(path);
         }
-
-        public bool FileNotFound() 
-        {
-            return _fileReader.GetFileNotFound();
-        }
-
-        public bool GetFromFile()
-        {
-            return _filePath.text != "";
-        }
     }
 }
