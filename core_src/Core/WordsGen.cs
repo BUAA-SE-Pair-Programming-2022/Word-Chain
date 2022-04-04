@@ -15,7 +15,7 @@ namespace Core
             {
                 try
                 {
-                    _dict[v[0]].Add(v.ToLower());
+                    _dict[v[0]].Add(v.ToLower());   // ToLower added after dev-combine tests.
                 }
                 catch (KeyNotFoundException)
                 {
