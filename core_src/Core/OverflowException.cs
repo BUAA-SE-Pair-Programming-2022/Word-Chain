@@ -4,9 +4,9 @@ namespace Core
 {
     public class OverflowException
     {
-        public OverflowException()
+        public OverflowException(int current)
         {
-            Console.WriteLine("Results has exceeded 20,000 which is not allowed :(");
+            Console.WriteLine(current.ToString() + "results has exceeded 20,000 which is not allowed :(");
         }
     }
 }

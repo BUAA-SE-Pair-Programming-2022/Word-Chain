@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using System;
 
 namespace Core
 {
@@ -22,7 +23,7 @@ namespace Core
 
             var returnVal = result.Count;
             result.Clear();
-            _ = new OverflowException();
+            _ = new OverflowException(returnVal);
 
             return returnVal;
         }
@@ -45,7 +46,7 @@ namespace Core
                 if (result.Count <= 20000) return result.Count;
                 var returnVal = result.Count;
                 result.Clear();
-                _ = new OverflowException();
+                _ = new OverflowException(returnVal);
 
                 return returnVal;
             }
@@ -69,7 +70,7 @@ namespace Core
                 if (result.Count <= 20000) return result.Count;
                 var returnVal = result.Count;
                 result.Clear();
-                _ = new OverflowException();
+                _ = new OverflowException(returnVal);
 
                 return returnVal;
             }
@@ -95,7 +96,7 @@ namespace Core
                 if (result.Count <= 20000) return result.Count;
                 var returnVal = result.Count;
                 result.Clear();
-                _ = new OverflowException();
+                _ = new OverflowException(returnVal);
 
                 return returnVal;
             }

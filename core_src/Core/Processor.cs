@@ -128,8 +128,7 @@ namespace Core
             var hash = new HashSet<char>();
             foreach (var ct in _roots)
             {
-                hash.Add(ct.GetVal()[0]);
-                TraverseRoot(ct, new List<string>(), hash);
+                TraverseRoot(ct, new List<string>(), new HashSet<char>(hash) { ct.GetVal()[0] });
             }
 
             _resMade = true;
