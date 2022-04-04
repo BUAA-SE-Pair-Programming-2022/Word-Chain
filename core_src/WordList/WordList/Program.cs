@@ -28,26 +28,27 @@ namespace WordList
             var resultSingle = new ArrayList();
             char starting = argsParser.H() ? argsParser.StartingChar() : '\0', ending = argsParser.T() ? argsParser.EndingChar() : '\0';
             var loopAllowed = argsParser.R();
+            int resCount = 0;
 
             switch (generalType)
             {
                 case 0:
-                    Core.Core.gen_chains_all(inWords, inLen, resultMulti);
+                    resCount = Core.Core.gen_chains_all(inWords, inLen, resultMulti);
                     break;
                 case 1:
-                    Core.Core.gen_chain_word(inWords, inLen, resultSingle, starting, ending, loopAllowed);
+                    resCount = Core.Core.gen_chain_word(inWords, inLen, resultSingle, starting, ending, loopAllowed);
                     break;
                 case 2:
-                    Core.Core.gen_chain_word_unique(inWords, inLen, resultSingle);
+                    resCount = Core.Core.gen_chain_word_unique(inWords, inLen, resultSingle);
                     break;
                 case 3:
-                    Core.Core.gen_chain_char(inWords, inLen, resultSingle, starting, ending, loopAllowed);
+                    resCount = Core.Core.gen_chain_char(inWords, inLen, resultSingle, starting, ending, loopAllowed);
                     break;
             }
 
             if (generalType == 0)
             {
-                Console.WriteLine(resultMulti.Count);
+                Console.WriteLine(resCount);
                 foreach (ArrayList list in resultMulti)
                 {
                     foreach (string word in list)
