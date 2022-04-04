@@ -75,9 +75,14 @@ namespace Scripts
                             break;
                     }
                 }
-                catch (LoopException)
+                catch (Core.LoopException)
                 {
                     ResFieldScript().SetValue("检测到单词环但是没有被允许！请检查输入或允许单词环存在。ʕ•́ᴥ•̀ʔ");
+                    return;
+                }
+                catch (Core.OverflowException e)
+                {
+                    ResFieldScript().SetValue("结果总长度为：" + e.V().ToString() + "，超过了最大限制（20000）！请适当缩减数据规模。ʕ•́ᴥ•̀ʔ");
                     return;
                 }
                 
@@ -104,32 +109,6 @@ namespace Scripts
                 }
 
                 ResFieldScript().SetValue(res.ToString());
-                
-                // var wg = new WordsGen(srcStr.ToLower());
-                // var processor = new Processor(wg.GetDict(), wg.GetList(), !argsParser.R());
-                // processor.BuildConcatTree();
-                
-                // if (TogglesScript().GetAllFalse())
-                // {
-                //     ResFieldScript().SetValue("请在确认前至少选择一项功能。");
-                // } 
-                // else if (!Char.IsLetter(TogglesScript().GetHeadChar()) && TogglesScript().GetHeadChar() != '\0' || 
-                //          !Char.IsLetter(TogglesScript().GetTailChar()) && TogglesScript().GetTailChar() != '\0')
-                // {
-                //     ResFieldScript().SetValue("指定的首尾字符必须为英文字母。");    
-                // }
-                // else 
-                // {
-                //     var resGen = new ResGen(new Core(processor), argsParser);
-                //     if (processor.GetPopupError()) 
-                //     {
-                //         processor.SetPopupError(false);
-                //         ResFieldScript().SetValue("输入中存在单词环但是没有被允许！请检查输入或调整指令。");
-                //     } else {
-                //         string newValue = resGen.Gen();
-                //         ResFieldScript().SetValue(InputSystemScript().FileNotFound() && InputSystemScript().GetFromFile() ? "输入内容为空或者文件不存在！请指定输入或检查文件绝对路径。" : newValue);
-                //     }
-                // }
             }
         }
 
@@ -146,21 +125,6 @@ namespace Scripts
         private Scripts.Toggles TogglesScript()
         {
             return toggles.GetComponent<Toggles>();
-        }
-
-        public void Method()
-        {
-            
-            ///////////////////// core methods ///////////////////////
-            // processor.GenAll();                                  // To generate all applicable chains.
-            // processor.GenMaxQuan();                              // To generate chains with maximum word count.
-            // processor.GenMaxLen();                               // To generate chains with maximum sum of words' lengths.
-            // processor.GenSpecificHeadOrTail('a', true);          // To generate chains with specific starting character.
-            // processor.GenSpecificHeadOrTail('t', false);         // To generate chains with specific ending character.
-            // processor.SetDetectLoop(true);                       // To enable loop detection.
-            // processor.GenAll();                                  // This time, LoopException would be induced.
-            // processor.GenMaxQuanWithoutRepeatedHead();           // To generate chains with maximum word count without repeated starting letter.
-            //////////////////////////////////////////////////////////
         }
     }
 }
