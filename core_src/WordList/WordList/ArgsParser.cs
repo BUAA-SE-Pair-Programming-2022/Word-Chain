@@ -63,7 +63,7 @@ namespace WordList
                         if (args[i].Length > 1)
                             throw new ArgsShouldBeCharException();
 
-                        if (!Char.IsLetter(_ending))
+                        if (!char.IsLetter(_ending))
                             throw new ArgsMissCharacterException();
 
                         _t = true;
@@ -93,7 +93,7 @@ namespace WordList
             }
 
             if ((generalType == 0 || generalType == 2) && (_h || _t || _r))
-                    throw new ArgsConflictException();
+                throw new ArgsConflictException();
 
             if (!throwConflict) 
                 throw new ArgsMissNecessaryException();

@@ -9,7 +9,7 @@ namespace Core
         public static int gen_chains_all(HashSet<string> words, int len, ArrayList result)
         {
             var wg = new WordsGen(new List<string>(words));
-            var processor = new Processor(wg.GetDict(), wg.GetList(), false);
+            var processor = new Processor(wg.GetDict(), wg.GetList(), true);
             processor.BuildConcatTree();
             processor.GenAll();
             var res = processor.GetRes();
@@ -22,7 +22,7 @@ namespace Core
 
             var returnVal = result.Count;
             result.Clear();
-            new OverflowException();
+            _ = new OverflowException();
 
             return returnVal;
         }
@@ -45,7 +45,7 @@ namespace Core
                 if (result.Count <= 20000) return result.Count;
                 var returnVal = result.Count;
                 result.Clear();
-                new OverflowException();
+                _ = new OverflowException();
 
                 return returnVal;
             }
@@ -56,7 +56,7 @@ namespace Core
         public static int gen_chain_word_unique(HashSet<string> words, int len, ArrayList result)
         {
             var wg = new WordsGen(new List<string>(words));
-            var processor = new Processor(wg.GetDict(), wg.GetList(), false);
+            var processor = new Processor(wg.GetDict(), wg.GetList(), true);
             processor.BuildConcatTree();
             processor.GenAll();
             var resByWordCount = processor.GetResByWordCount();
@@ -69,7 +69,7 @@ namespace Core
                 if (result.Count <= 20000) return result.Count;
                 var returnVal = result.Count;
                 result.Clear();
-                new OverflowException();
+                _ = new OverflowException();
 
                 return returnVal;
             }
@@ -95,7 +95,7 @@ namespace Core
                 if (result.Count <= 20000) return result.Count;
                 var returnVal = result.Count;
                 result.Clear();
-                new OverflowException();
+                _ = new OverflowException();
 
                 return returnVal;
             }

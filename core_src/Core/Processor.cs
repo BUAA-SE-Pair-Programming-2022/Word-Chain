@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -22,27 +23,29 @@ namespace Core
             _wordsDict = dict;
             _wordsList = list;
             _detectLoop = detectLoop;
-            for (var c = 'a'; c <= 'z'; ++c)
-            {
-                _headCharDict[c] = new List<WordChain>();
-                _tailCharDict[c] = new List<WordChain>();
-            }
         }
 
         private static void AddTreeNode(ConcatTree ct, char starting, IReadOnlyDictionary<char, List<string>> dict)
         {
             var visited = new List<string>();
-            foreach (var str in dict[starting])
+            try
             {
-                if (visited.Contains(str)) continue;
-                var newKid = new ConcatTree(str);
-                var tDict = new Dictionary<char, List<string>>();
-                for (var c = 'a'; c <= 'z'; ++c)
-                    tDict[c] = new List<string>(dict[c].ToArray());
-                tDict[starting].RemoveAt(tDict[starting].LastIndexOf(str));
-                ct.AddKid(newKid);
-                AddTreeNode(newKid, str[str.Length - 1], tDict);
-                visited.Add(str);
+                foreach (var str in dict[starting])
+                {
+                    if (visited.Contains(str)) continue;
+                    var newKid = new ConcatTree(str);
+                    var tDict = new Dictionary<char, List<string>>();
+                    foreach (var c in dict.Keys)
+                        tDict[c] = new List<string>(dict[c].ToArray());
+                    tDict[starting].RemoveAt(tDict[starting].LastIndexOf(str));
+                    ct.AddKid(newKid);
+                    AddTreeNode(newKid, str[str.Length - 1], tDict);
+                    visited.Add(str);
+                }
+            }
+            catch (KeyNotFoundException)
+            {
+                return;
             }
         }
 
@@ -71,26 +74,39 @@ namespace Core
             }
         }
 
-        private void MakeRes(ConcatTree ct, List<string> pres, Dictionary<char, int> kindsOfStarts)
+        private void MakeRes(ConcatTree ct, List<string> pres, HashSet<char> kindsOfStarts)
         {
             var tRes = new List<string>(pres.ToArray()) {ct.GetVal()};
-            var variety = 0;
-            for (var a = 'a'; a <= 'z'; ++a)
-                variety += kindsOfStarts[a] == 0 ? 0 : 1;
-            var res = new WordChain(tRes, tRes.Sum(item => item.Length), variety == tRes.Count);
+            var res = new WordChain(tRes, tRes.Sum(item => item.Length), kindsOfStarts.Count == tRes.Count);
             char starting = pres[0][0], ending = tRes[tRes.Count - 1][tRes[tRes.Count - 1].Length - 1];
             if (starting == ending && _detectLoop)
                 throw new LoopException();
 
-            _headCharDict[starting].Add(res);
-            _tailCharDict[ending].Add(res);
+            try
+            {
+                _headCharDict[starting].Add(res);
+            }
+            catch (KeyNotFoundException)
+            {
+                _headCharDict[starting] = new List<WordChain> { res };
+            }
+            
+            try
+            {
+                _tailCharDict[ending].Add(res);
+            }
+            catch (KeyNotFoundException)
+            {
+                _tailCharDict[ending] = new List<WordChain> { res };
+            }
+                
 
             _res.Add(res);
             AddToDictionary(ref _resByCharCount, -res.GetLength(), res);
             AddToDictionary(ref _resByWordCount, -res.GetCount(), res);
         }
 
-        private void TraverseRoot(ConcatTree ct, List<string> pres, Dictionary<char, int> kindsOfStart)
+        private void TraverseRoot(ConcatTree ct, List<string> pres, HashSet<char> kindsOfStart)
         {
             if (ct == null) return;
 
@@ -101,21 +117,19 @@ namespace Core
 
             foreach (var tct in ct.GetKids())
             {
-                var t = new Dictionary<char, int>(kindsOfStart);
-                ++t[tct.GetVal()[0]];
+                var t = new HashSet<char>(kindsOfStart);
+                t.Add(tct.GetVal()[0]);
                 TraverseRoot(tct, tPres, t);
             }
         }
 
         private void MakeResList()
         {
-            var dict = new Dictionary<char, int>();
+            var hash = new HashSet<char>();
             foreach (var ct in _roots)
             {
-                for (var c = 'a'; c <= 'z'; ++c)
-                    dict[c] = 0;
-                dict[ct.GetVal()[0]] = 1;
-                TraverseRoot(ct, new List<string>(), dict);
+                hash.Add(ct.GetVal()[0]);
+                TraverseRoot(ct, new List<string>(), hash);
             }
 
             _resMade = true;

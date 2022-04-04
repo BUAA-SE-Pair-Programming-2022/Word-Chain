@@ -66,16 +66,27 @@ namespace WordList
 
         private static bool HelpRequired(string param)
         {
-            return param.Equals("--help") || param.Equals("--help");
+            return param.Equals("--help") || param.Equals("help");
             //return param is "--help" or "help";
         }
 
         private static void DisplayHelp()
         {
             Console.WriteLine(
-                "Word List (1.0.0)\n" +
-                "Usage: dotnet run --project <.csproj> <command> <args>\n" +
-                "======================================================\n");
+                "Word List (3.1.1)\n" +
+                "=================\n" +
+                "Usage:\n" +
+                "   Wordlist <function> <filename> [options]\n\n" +
+                "Functions:\n" +
+                "   -n              Get the numeration of word chains.\n" +
+                "   -w              Get the word chain with most words.\n" +
+                "   -m              Get the word chain with most words of different starting letter.\n" +
+                "   -c              Get the word chain with most letters.\n\n" +
+                "Options:\n" +
+                "   -h < head >     Specify the starting letter of the chain.\n" +
+                "   -t < tail >     Specify the ending letter of the chain.\n" +
+                "   -r              Allow potential word circles like \"ab\"-\"ba\".\n"
+            );
         }
     }
 }

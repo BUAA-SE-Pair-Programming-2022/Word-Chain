@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,14 +11,18 @@ namespace Core
 
         public WordsGen(IEnumerable<string> words)
         {
-            for (var c = 'a'; c <= 'z'; ++c)
-                _dict[c] = new List<string>();
             foreach (var v in words.Where(word => word.Length > 1))
-                if (v.Length > 1)
+            {
+                try
                 {
                     _dict[v[0]].Add(v.ToLower());
-                    _list.Add(v.ToLower());
                 }
+                catch (KeyNotFoundException)
+                {
+                    _dict[v[0]] = new List<string> { v.ToLower() };
+                }
+                _list.Add(v.ToLower());
+            } 
         }
 
         public Dictionary<char, List<string>> GetDict()
